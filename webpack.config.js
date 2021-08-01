@@ -1,5 +1,7 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const purgeCSS = require("@fullhuman/postcss-purgecss");
 
 module.exports = {
   entry: "./index.js",
@@ -11,7 +13,10 @@ module.exports = {
   devServer: {
     contentBase: "./dist",
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./src/index.pug" })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "./src/index.pug" }),
+    new MiniCssExtractPlugin(),
+  ],
   module: {
     rules: [
       {
@@ -21,16 +26,27 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: {
-                  tailwindcss: {},
-                  autoprefixer: {},
-                },
+                plugins: [
+                  require("tailwindcss"),
+                  require("autoprefixer"),
+                  purgeCSS({
+                    content: ["./**/*.pug", "./**/*.html"],
+                    extractors: [
+                      {
+                        extractor: content => {
+                          return content.match(/[A-z0-9-:\/]+/g) || [];
+                        },
+                        extensions: ["css", "html", "pug"],
+                      },
+                    ],
+                  }),
+                ],
               },
             },
           },
