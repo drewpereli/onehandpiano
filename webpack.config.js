@@ -14,6 +14,24 @@ module.exports = {
         test: /\.pug$/,
         use: ["pug-loader"],
       },
+      {
+        test: /\.css$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: {
+                  tailwindcss: {},
+                  autoprefixer: {},
+                },
+              },
+            },
+          },
+        ],
+      },
     ],
   },
 };
