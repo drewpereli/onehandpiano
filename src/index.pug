@@ -38,8 +38,11 @@ html.bg-gray-900(lang="en")
                 +input({label: 'name', name: 'name'})
                 +input({label: 'email', name: 'email', type: 'email', required: true}).mt-4
                 +input({label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
-                .flex.justify-end.mt-4
-                  button.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium(type="submit" class="hover:bg-blue-400") Submit
+                .flex.justify-between.mt-4
+                  .flex.items-center.text-sm.relative.flex-grow
+                    .text-green-500.absolute.w-full.h-full.flex.items-center.hidden#email-form-success-message Your message was sent!
+                    .text-red-500.absolute.w-full.h-full.flex.items-center.hidden#email-form-error-message There was an error. Please try again later.
+                  button.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium#email-form-submit-btn(type="submit" class="hover:bg-blue-400") Submit
 
         .bg-gray-900.h-52.pb-12.flex.flex-col.items-center.justify-end
           .text-gray-50.text-xl.uppercase One Hand Piano

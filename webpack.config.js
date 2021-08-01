@@ -1,8 +1,10 @@
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const purgeCSS = require("@fullhuman/postcss-purgecss");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./index.js",
@@ -18,6 +20,7 @@ module.exports = {
     new HtmlWebpackPlugin({ template: "./src/index.pug" }),
     new MiniCssExtractPlugin(),
     new FaviconsWebpackPlugin("./src/images/favicon.png"),
+    new Dotenv(),
   ],
   module: {
     rules: [
@@ -47,6 +50,7 @@ module.exports = {
                         extensions: ["css", "html", "pug"],
                       },
                     ],
+                    safelist: [/btn-in-progress/],
                   }),
                 ],
               },
