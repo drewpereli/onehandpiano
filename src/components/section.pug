@@ -1,0 +1,9 @@
+include ./header
+
+mixin section({headerText = false})
+  .py-24.px-12.flex.flex-col.items-center&attributes(attributes)
+    if headerText
+      +header= headerText
+
+    if block
+      block

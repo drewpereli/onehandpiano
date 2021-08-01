@@ -1,9 +1,10 @@
 mixin input({type = 'text', label = false, name = '', rows = 10})
-  div.flex.flex-col&attributes(attributes)
+  div.flex.flex-col.items-start&attributes(attributes)
     if label
-      label= label
+      label.text-sm.uppercase= label
 
-    if type === 'textarea'
-      textarea.w-full.max-w-full.bg-gray-700.border.border-gray-600.p-1.rounded(name=name rows=rows class="focus:border-green-500 focus:outline-none focus:bg-gray-600")
-    else
-      input.bg-gray-700.border.border-gray-600.p-1.rounded(type=`${type}` name=name class="focus:border-green-500 focus:outline-none focus:bg-gray-600")
+    .mt-1.w-full
+      if type === 'textarea'
+        textarea.input-field(name=name rows=rows)
+      else
+        input.input-field(type=`${type}` name=name)

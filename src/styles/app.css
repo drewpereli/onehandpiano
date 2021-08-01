@@ -1,3 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.input-field {
+  @apply w-full max-w-full border border-gray-600 p-1 rounded focus:outline-none;
+}
