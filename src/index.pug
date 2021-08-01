@@ -11,7 +11,7 @@ html.bg-gray-900(lang="en")
 
   body
     main.bg-gray-50.text-gray-700
-      +darkened-parallax.h-80vh.bg-header-piano
+      +darkened-parallax.h-screen.bg-header-piano
         .h-full.w-full.flex.items-center.justify-center
 
           nav.flex.items-center.justify-around.h-16.text-white.text-sm.uppercase.absolute.top-0.left-0.w-full
@@ -22,22 +22,24 @@ html.bg-gray-900(lang="en")
 
       div
 
-        +section({headerText: "About One Hand Piano"})#section-about
-          .text-center.w-full.max-w-xl.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Ad, vero laboriosam. Non eligendi consequatur voluptatibus ad, nesciunt,
-            asperiores inventore deserunt tenetur molestiae nobis debitis molestias quis veniam omnis. Tempora, ex!
+        #section-about
+          +section({headerText: "About One Hand Piano"})(data-aos="fade-up")
+            .text-center.w-full.max-w-xl.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Ad, vero laboriosam. Non eligendi consequatur voluptatibus ad, nesciunt,
+              asperiores inventore deserunt tenetur molestiae nobis debitis molestias quis veniam omnis. Tempora, ex!
 
         +darkened-parallax.h-50vh.bg-tuning-piano
 
-        +section({headerText: "Get in Touch"})#section-contact
-          .text-center.w-full.max-w-xl
-            form.w-full#contact-form
-              +input({label: 'name', name: 'name'})
-              +input({label: 'email', name: 'email', type: 'email', required: true}).mt-4
-              +input({label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
-              .flex.justify-end.mt-4
-                button.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium(type="submit" class="hover:bg-blue-400") Submit
+        #section-contact
+          +section({headerText: "Get in Touch"})(data-aos="fade-up")
+            .text-center.w-full.max-w-xl
+              form.w-full#contact-form
+                +input({label: 'name', name: 'name'})
+                +input({label: 'email', name: 'email', type: 'email', required: true}).mt-4
+                +input({label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
+                .flex.justify-end.mt-4
+                  button.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium(type="submit" class="hover:bg-blue-400") Submit
 
         .bg-gray-900.h-52.pb-12.flex.flex-col.items-center.justify-end
           .text-gray-50.text-xl.uppercase One Hand Piano

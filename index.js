@@ -1,4 +1,5 @@
 import "./src/styles/app.css";
+import Aos from "aos";
 
 document.querySelectorAll(".main-nav-item").forEach(el => {
   let sectionName = el.dataset.section;
@@ -14,3 +15,5 @@ document.getElementById("contact-form")?.addEventListener("submit", e => {
   // let form = e.target;
   console.log("submitting the form");
 });
+
+Aos.init({ duration: 800 });
