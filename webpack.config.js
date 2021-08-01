@@ -7,6 +7,10 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: "index_bundle.js",
   },
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./dist",
+  },
   plugins: [new HtmlWebpackPlugin({ template: "./src/index.pug" })],
   module: {
     rules: [
