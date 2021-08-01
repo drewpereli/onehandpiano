@@ -34,8 +34,8 @@ html.bg-gray-900(lang="en")
           .text-center.w-full.max-w-xl
             form.w-full#contact-form
               +input({label: 'name', name: 'name'})
-              +input({label: 'email', name: 'email', type: 'email'}).mt-4
-              +input({label: 'message', name: 'message', type: 'textarea'}).mt-4
+              +input({label: 'email', name: 'email', type: 'email', required: true}).mt-4
+              +input({label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
               .flex.justify-end.mt-4
                 button.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium(type="submit" class="hover:bg-blue-400") Submit
 
