@@ -15,7 +15,7 @@ html.bg-gray-900(lang="en")
         .h-full.w-full.flex.items-center.justify-center
 
           nav.flex.items-center.justify-around.h-16.text-white.text-sm.uppercase.absolute.top-0.left-0.w-full
-            each navItem in [{label: 'about', section: 'about'}, {label: 'contact', section: 'contact'}]
+            each navItem in [{label: 'about', section: 'about'}, {label: 'do i need tuning?', section: 'why-get-tuned'}, {label: 'contact', section: 'contact'}]
               span.cursor-pointer.main-nav-item(class="hover:underline" data-section=navItem.section)=navItem.label
 
           .px-4.uppercase
@@ -33,6 +33,24 @@ html.bg-gray-900(lang="en")
               For my entire life, I’ve had a great love of music. I became proficient in voice, piano, and drums and ended up going to Berklee College of Music for Contemporary Writing and Production. I did all this in spite of the fact that I was born with a paralyzed left hand. One of the things I pursued was piano technology. I was one of many music lovers in a family of engineers, so I decided to combine the two worlds. There were plenty of people who told me that it would be impossible, but I decided to prove them wrong. After graduating from Berklee, I became a certified piano technician at Piano Technician Academy.
 
         +darkened-parallax.h-50vh.bg-tuning-piano
+
+        #section-why-get-tuned
+          +section({headerText: "Why You Should Get Your Piano Tuned"})(data-aos="fade-up")
+            .w-full.max-w-2xl.flex.items-center
+              div
+                ol.list-decimal.list-inside
+                  li Do you play piano?
+                  li Would you like to play piano?
+                  li Do you have kids that you would like to learn piano?
+                  li Are you looking to sell your piano?
+                  li Are you interested in music?
+                  li Would you like to have it as a nice piece of furniture?
+                  li Do you hate it when people sing out of tune?
+                  li Do you not remember when it was last tuned?
+
+                .font-bold.mt-4 If your answer is yes to any of these questions, you should get your piano tuned.
+
+        +darkened-parallax.h-50vh.bg-front-view-piano
 
         #section-contact
           +section({headerText: "Get in Touch"})(data-aos="fade-up")

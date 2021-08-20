@@ -8,6 +8,7 @@ module.exports = {
       backgroundImage: {
         "header-piano": `url('${imagesPath}/header-piano.jpg')`,
         "tuning-piano": `url('${imagesPath}/tuning-piano.jpg')`,
+        "front-view-piano": `url('${imagesPath}/front-view-piano.jpg')`,
       },
       height: {
         "50vh": "50vh",
