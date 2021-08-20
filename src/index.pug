@@ -18,7 +18,12 @@ html.bg-gray-900(lang="en")
             each navItem in [{label: 'about', section: 'about'}, {label: 'contact', section: 'contact'}]
               span.cursor-pointer.main-nav-item(class="hover:underline" data-section=navItem.section)=navItem.label
 
-          .flex.items-center.justify-center.text-6xl.text-white.w-full.uppercase.text-center.py-4 One Hand Piano
+          .px-4.uppercase
+            .text-6xl.text-center.text-white One Hand Piano
+            .mt-4.flex.justify-between.px-8.text-lg.text-gray-300
+              span Piano Tuner
+              span Piano Technician
+
 
       div
 
