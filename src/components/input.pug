@@ -1,5 +1,5 @@
 mixin input({type = 'text', label = false, name = '', rows = 10, required = false, id})
-  div.flex.flex-col.items-start&attributes(attributes)
+  .flex.flex-col.items-start&attributes(attributes)
     if label
       label.text-sm.uppercase(for=id)= label
         if required
@@ -7,6 +7,6 @@ mixin input({type = 'text', label = false, name = '', rows = 10, required = fals
 
     .mt-1.w-full
       if type === 'textarea'
-        textarea.input-field(name=name rows=rows required=required id=id)
+        textarea.input-field(name=name, rows=rows, required=required, id=id)
       else
-        input.input-field(type=`${type}` name=name required=required id=id)
+        input.input-field(type=`${type}`, name=name, required=required, id=id)

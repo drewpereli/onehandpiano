@@ -21,6 +21,7 @@
   "homepage": "https://github.com/drewpereli/onehandpiano#readme",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@prettier/plugin-pug": "^1.16.5",
     "aos": "^2.3.4",
     "autoprefixer": "^10.3.1",
     "css-loader": "^6.2.0",

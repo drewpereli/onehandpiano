@@ -2,21 +2,23 @@ include components/input
 include components/section
 include components/darkened-parallax
 
-html.bg-gray-900(lang="en")
+html.bg-gray-900(lang='en')
   head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title One Hand Piano
 
   body
     main.bg-gray-50.text-gray-700
       +darkened-parallax.h-screen.bg-header-piano
         .h-full.w-full.flex.items-center.justify-center
-
           nav.flex.items-center.justify-around.h-16.text-white.text-sm.uppercase.absolute.top-0.left-0.w-full
             each navItem in [{label: 'about', section: 'about'}, {label: 'do i need tuning?', section: 'why-get-tuned'}, {label: 'contact', section: 'contact'}]
-              span.cursor-pointer.main-nav-item(class="hover:underline" data-section=navItem.section)=navItem.label
+              span.cursor-pointer.main-nav-item(
+                class='hover:underline',
+                data-section=navItem.section
+              )= navItem.label
 
           .px-4.uppercase
             .text-6xl.text-center.text-white One Hand Piano
@@ -25,18 +27,18 @@ html.bg-gray-900(lang="en")
               span.ml-1.opacity-50 |
               span.ml-1 Piano Tuner and Technician
 
-
       div
-
         #section-about
-          +section({headerText: "About One Hand Piano"})(data-aos="fade-up")
+          +section({headerText: "About One Hand Piano"})(data-aos='fade-up')
             .text-center.w-full.max-w-xl.
               For my entire life, I’ve had a great love of music. I became proficient in voice, piano, and drums and ended up going to Berklee College of Music for Contemporary Writing and Production. I did all this in spite of the fact that I was born with a paralyzed left hand. One of the things I pursued was piano technology. I was one of many music lovers in a family of engineers, so I decided to combine the two worlds. There were plenty of people who told me that it would be impossible, but I decided to prove them wrong. After graduating from Berklee, I became a certified piano technician at Piano Technician Academy.
 
         +darkened-parallax.h-50vh.bg-tuning-piano
 
         #section-why-get-tuned
-          +section({headerText: "Why You Should Get Your Piano Tuned"})(data-aos="fade-up")
+          +section({headerText: "Why You Should Get Your Piano Tuned"})(
+            data-aos='fade-up'
+          )
             .w-full.max-w-2xl.flex.items-center
               div
                 ol.list-decimal.list-inside
@@ -54,17 +56,20 @@ html.bg-gray-900(lang="en")
         +darkened-parallax.h-50vh.bg-front-view-piano
 
         #section-contact
-          +section({headerText: "Get in Touch"})(data-aos="fade-up")
+          +section({headerText: "Get in Touch"})(data-aos='fade-up')
             .text-center.w-full.max-w-xl
-              form.w-full#contact-form
+              form#contact-form.w-full
                 +input({id: 'name-input', label: 'name', name: 'name'})
                 +input({id: 'email-input', label: 'email', name: 'email', type: 'email', required: true}).mt-4
                 +input({id: 'message-input', label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
                 .flex.justify-between.mt-4
                   .flex.items-center.text-sm.relative.flex-grow
-                    .text-green-500.absolute.w-full.h-full.flex.items-center.hidden#email-form-success-message Your message was sent!
-                    .text-red-500.absolute.w-full.h-full.flex.items-center.hidden#email-form-error-message There was an error. Please try again later.
-                  button.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium#email-form-submit-btn(type="submit" class="hover:bg-blue-400") Submit
+                    #email-form-success-message.text-green-500.absolute.w-full.h-full.flex.items-center.hidden Your message was sent!
+                    #email-form-error-message.text-red-500.absolute.w-full.h-full.flex.items-center.hidden There was an error. Please try again later.
+                  button#email-form-submit-btn.bg-blue-500.rounded.px-12.py-2.text-gray-100.uppercase.text-xs.font-medium(
+                    type='submit',
+                    class='hover:bg-blue-400'
+                  ) Submit
 
         .bg-gray-900.h-52.pb-12.flex.flex-col.items-center.justify-end
           .text-gray-50.text-xl.uppercase One Hand Piano
