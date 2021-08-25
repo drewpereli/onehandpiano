@@ -57,9 +57,9 @@ html.bg-gray-900(lang="en")
           +section({headerText: "Get in Touch"})(data-aos="fade-up")
             .text-center.w-full.max-w-xl
               form.w-full#contact-form
-                +input({label: 'name', name: 'name'})
-                +input({label: 'email', name: 'email', type: 'email', required: true}).mt-4
-                +input({label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
+                +input({id: 'name-input', label: 'name', name: 'name'})
+                +input({id: 'email-input', label: 'email', name: 'email', type: 'email', required: true}).mt-4
+                +input({id: 'message-input', label: 'message', name: 'message', type: 'textarea', required: true}).mt-4
                 .flex.justify-between.mt-4
                   .flex.items-center.text-sm.relative.flex-grow
                     .text-green-500.absolute.w-full.h-full.flex.items-center.hidden#email-form-success-message Your message was sent!
