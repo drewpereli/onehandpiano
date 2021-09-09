@@ -14,6 +14,18 @@ html.bg-gray-900(lang='en')
     )
     title One Hand Piano
 
+    script(
+      async,
+      src='https://www.googletagmanager.com/gtag/js?id=G-FXSKJ6L3BJ'
+    )
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-FXSKJ6L3BJ");
+
   body
     main.bg-gray-50.text-gray-700
       +darkened-parallax.h-screen.bg-header-piano
