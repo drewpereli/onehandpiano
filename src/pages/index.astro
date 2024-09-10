@@ -4,6 +4,7 @@ import NavLink from "../components/NavLink.astro";
 import headerPiano from '../images/header-piano.jpg'
 import tuningPiano from '../images/tuning-piano.jpg'
 import frontViewPiano from '../images/front-view-piano.jpg'
+import ContactForm from '../components/ContactForm.astro';
 
 const sections = [{label: 'about', id: 'about'}, {label: 'do i need tuning?', id: 'why-get-tuned'}, {label: 'contact', id: 'contact'}];
 ---
@@ -123,41 +124,7 @@ const sections = [{label: 'about', id: 'about'}, {label: 'do i need tuning?', id
           </div>
         </div>
         <div class="text-center w-full max-w-xl">
-          <form class="w-full" id="contact-form">
-            <div class="flex flex-col items-start">
-              <label class="text-sm uppercase" for="name-input">name</label>
-              <div class="mt-1 w-full">
-                <input class="input-field" name="name" id="name-input" />
-              </div>
-            </div>
-            <div class="flex flex-col items-start mt-4">
-              <label class="text-sm uppercase" for="email-input">email<span class="ml-1 text-red-500">*</span></label>
-              <div class="mt-1 w-full">
-                <input class="input-field" type="email" name="email" required="" id="email-input" />
-              </div>
-            </div>
-            <div class="flex flex-col items-start mt-4">
-              <label class="text-sm uppercase" for="message-input">message<span
-                  class="ml-1 text-red-500">*</span></label>
-              <div class="mt-1 w-full">
-                <textarea class="input-field" name="message" rows="10" required="" id="message-input"></textarea>
-              </div>
-            </div>
-            <div class="flex justify-between mt-4">
-              <div class="flex items-center text-sm relative flex-grow">
-                <div class="text-green-500 absolute w-full h-full items-center hidden"
-                  id="email-form-success-message">
-                  Your message was sent!
-                </div>
-                <div class="text-red-500 absolute w-full h-full items-center hidden"
-                  id="email-form-error-message">
-                  There was an error. Please try again later.
-                </div>
-              </div><button
-                class="bg-blue-800 rounded px-12 py-2 text-gray-50 uppercase text-xs font-medium hover:bg-blue-700"
-                id="email-form-submit-btn" type="submit">Submit</button>
-            </div>
-          </form>
+          <ContactForm />
         </div>
       </div>
     </div>
