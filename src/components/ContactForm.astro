@@ -1,0 +1,94 @@
+---
+import Input from "./Input.astro";
+---
+
+<style>
+  .error-message,
+  .success-message {
+    display: none;
+  }
+
+  #contact-form[data-form-state="success"] .success-message {
+    display: flex;
+  }
+
+  #contact-form[data-form-state="error"] .error-message {
+    display: flex;
+  }
+
+  #contact-form[data-form-state="submitting"] #email-form-submit-btn:before {
+    content: "•";
+    position: absolute;
+    font-size: 1.2rem;
+    transform: translateX(-1em) translateY(-0.075em);
+    animation: loading-bounce 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes loading-bounce {
+    from {
+      transform: translateX(-1em) translateY(-0.075em);
+    }
+
+    to {
+      transform: translateX(-1.8em) translateY(-0.075em);
+    }
+  }
+</style>
+
+<form class="w-full space-y-4" id="contact-form" data-form-state="pending">
+  <Input label="name" name="name" />
+  <Input label="email" name="email" required />
+  <Input label="message" name="message" required textArea />
+  <div class="flex justify-between">
+    <div class="flex items-center text-sm relative flex-grow">
+      <div
+        class="success-message text-green-500 absolute w-full h-full items-center"
+      >
+        Your message was sent!
+      </div>
+      <div
+        class="error-message text-red-500 absolute w-full h-full items-center"
+      >
+        There was an error. Please try again later.
+      </div>
+    </div>
+    <button
+      class="bg-blue-800 rounded px-12 py-2 text-gray-50 uppercase text-xs font-medium hover:bg-blue-700"
+      id="email-form-submit-btn"
+      type="submit">Submit</button
+    >
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    form.dataset.formState = "submitting";
+
+    const formData = new FormData(form);
+
+    const body = {
+      name: formData.get("name") || "an anonymous user",
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      await fetch("https://submit-form.com/LfNEIyUoi", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      form.dataset.formState = "success";
+    } catch {
+      form.dataset.formState = "error";
+    }
+  });
+</script>

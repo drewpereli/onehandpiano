@@ -1,0 +1,162 @@
+---
+import "aos/dist/aos.css";
+import NavLink from "../components/NavLink.astro";
+import headerPiano from "../images/header-piano.jpg";
+import tuningPiano from "../images/tuning-piano.jpg";
+import frontViewPiano from "../images/front-view-piano.jpg";
+import ContactForm from "../components/ContactForm.astro";
+
+const sections = [
+  { label: "about", id: "about" },
+  { label: "do i need tuning?", id: "why-get-tuned" },
+  { label: "contact", id: "contact" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>One Hand Piano</title>
+  </head>
+
+  <body data-aos-easing="ease" data-aos-duration="800" data-aos-delay="0">
+    <main class="bg-gray-50 text-gray-700">
+      <div
+        class="w-full bg-scroll bg-cover bg-center md:bg-fixed h-screen"
+        style={{ backgroundImage: `url(${headerPiano.src})` }}
+      >
+        <div
+          class="h-full w-full bg-black bg-opacity-70 flex items-center justify-center"
+        >
+          <nav
+            class="flex items-center justify-around h-16 text-white text-sm uppercase absolute top-0 left-0 w-full"
+          >
+            {
+              sections.map((section) => (
+                <NavLink
+                  label={section.label}
+                  scrollToId={`section-${section.id}`}
+                />
+              ))
+            }
+          </nav>
+
+          <div class="px-4 uppercase">
+            <div class="text-6xl text-center text-white">One Hand Piano</div>
+
+            <div class="mt-4 text-lg text-center text-gray-300">
+              <span>George Pereli</span>
+              <span class="ml-1 opacity-50">|</span>
+              <span class="ml-1">Piano Tuner and Technician</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-about">
+        <div
+          class="py-24 px-12 flex flex-col items-center aos-init"
+          data-aos="fade-up"
+        >
+          <div>
+            <h4 class="text-2xl uppercase text-center">About One Hand Piano</h4>
+            <div class="h-16 flex items-center justify-center">
+              <div class="w-20 h-px bg-current"></div>
+            </div>
+          </div>
+          <p class="text-center w-full max-w-xl">
+            For my entire life, I've had a great love of music. I became
+            proficient in voice, piano, and drums and ended up going to Berklee
+            College of Music for Contemporary Writing and Production. I did all
+            this in spite of the fact that I was born with a paralyzed left
+            hand. One of the things I pursued was piano technology. I was one of
+            many music lovers in a family of engineers, so I decided to combine
+            the two worlds. There were plenty of people who told me that it
+            would be impossible, but I decided to prove them wrong. After
+            graduating from Berklee, I became a certified piano technician at
+            Piano Technician Academy.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="w-full bg-scroll bg-cover bg-center md:bg-fixed h-[50vh]"
+        style={{ backgroundImage: `url(${tuningPiano.src})` }}
+      >
+        <div class="h-full w-full bg-black bg-opacity-70"></div>
+      </div>
+
+      <div id="section-why-get-tuned">
+        <div
+          class="py-24 px-12 flex flex-col items-center aos-init"
+          data-aos="fade-up"
+        >
+          <div>
+            <h4 class="text-2xl uppercase text-center">
+              Why You Should Get Your Piano Tuned
+            </h4>
+            <div class="h-16 flex items-center justify-center">
+              <div class="w-20 h-px bg-current"></div>
+            </div>
+          </div>
+          <div class="w-full max-w-2xl flex items-center">
+            <div>
+              <ol class="list-decimal list-inside">
+                <li>Do you play piano?</li>
+                <li>Would you like to play piano?</li>
+                <li>Do you have kids that you would like to learn piano?</li>
+                <li>Are you looking to sell your piano?</li>
+                <li>Are you interested in music?</li>
+                <li>Would you like to have it as a nice piece of furniture?</li>
+                <li>Do you hate it when people sing out of tune?</li>
+                <li>Do you not remember when it was last tuned?</li>
+              </ol>
+              <div class="font-bold mt-4">
+                If your answer is yes to any of these questions, you should get
+                your piano tuned.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="w-full bg-scroll bg-cover bg-center md:bg-fixed h-[50vh]"
+        style={{ backgroundImage: `url(${frontViewPiano.src})` }}
+      >
+        <div class="h-full w-full bg-black bg-opacity-70"></div>
+      </div>
+
+      <div id="section-contact">
+        <div
+          class="py-24 px-12 flex flex-col items-center aos-init"
+          data-aos="fade-up"
+        >
+          <div>
+            <h4 class="text-2xl uppercase text-center">Get in Touch</h4>
+            <div class="h-16 flex items-center justify-center">
+              <div class="w-20 h-px bg-current"></div>
+            </div>
+          </div>
+          <div class="text-center w-full max-w-xl">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+      <div class="bg-black h-52 pb-12 flex flex-col items-center justify-end">
+        <div class="text-gray-50 text-xl uppercase">One Hand Piano</div>
+        <div class="mt-6 text-gray-400 text-sm uppercase">
+          226 Pleasant Street, Arlington, MA 02476
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    import Aos from "aos";
+    Aos.init({ duration: 800 });
+  </script>
+</html>

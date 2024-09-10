@@ -10,22 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Use Node 14.16.1
-        uses: actions/setup-node@v1
+      - name: Use Node 20.11.1
+        uses: actions/setup-node@v4
         with:
-          node-version: '14.16.1'
+          node-version: "20.11.1"
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build app
         run: npm run build
-        env:
-          EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}
-          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
-          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
 
       - name: Deploy main build
         uses: appleboy/scp-action@master
