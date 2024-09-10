@@ -1,5 +1,5 @@
 ---
-import Input from './Input.astro';
+import Input from "./Input.astro";
 ---
 
 <style>
@@ -8,16 +8,16 @@ import Input from './Input.astro';
     display: none;
   }
 
-  #contact-form[data-form-state='success'] .success-message {
+  #contact-form[data-form-state="success"] .success-message {
     display: flex;
   }
 
-  #contact-form[data-form-state='error'] .error-message {
+  #contact-form[data-form-state="error"] .error-message {
     display: flex;
   }
 
-  #contact-form[data-form-state='submitting'] #email-form-submit-btn:before {
-    content: '•';
+  #contact-form[data-form-state="submitting"] #email-form-submit-btn:before {
+    content: "•";
     position: absolute;
     font-size: 1.2rem;
     transform: translateX(-1em) translateY(-0.075em);
@@ -35,11 +35,7 @@ import Input from './Input.astro';
   }
 </style>
 
-<form
-  class="w-full space-y-4"
-  id="contact-form"
-  data-form-state="pending"
->
+<form class="w-full space-y-4" id="contact-form" data-form-state="pending">
   <Input label="name" name="name" />
   <Input label="email" name="email" required />
   <Input label="message" name="message" required textArea />
@@ -65,34 +61,34 @@ import Input from './Input.astro';
 </form>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const form = document.getElementById("contact-form") as HTMLFormElement;
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    form.dataset.formState = 'submitting';
+    form.dataset.formState = "submitting";
 
     const formData = new FormData(form);
 
     const body = {
-      name: formData.get('name') || 'an anonymous user',
-      email: formData.get('email'),
-      message: formData.get('message'),
+      name: formData.get("name") || "an anonymous user",
+      email: formData.get("email"),
+      message: formData.get("message"),
     };
 
     try {
-      await fetch('https://submit-form.com/LfNEIyUoi', {
-        method: 'POST',
+      await fetch("https://submit-form.com/LfNEIyUoi", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(body),
       });
 
-      form.dataset.formState = 'success';
+      form.dataset.formState = "success";
     } catch {
-      form.dataset.formState = 'error';
+      form.dataset.formState = "error";
     }
   });
 </script>
