@@ -1,0 +1,70 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<style>
+  .fade-up-on-scroll-content {
+    transition:
+      opacity 800ms ease,
+      transform 800ms ease;
+  }
+
+  .fade-up-on-scroll-content[data-hidden] {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+</style>
+
+<div class="fade-up-on-scroll-container">
+  <!-- Move target down a pixel so element isn't considered intersecting on initial render if it's right under the viewport -->
+  <div class="fade-up-on-scroll-target translate-y-px"></div>
+  <div class:list={[className, "fade-up-on-scroll-content"]}>
+    <slot />
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    const targetEls = entries
+      .filter((ent) => ent.isIntersecting)
+      .map((ent) => ent.target);
+
+    const contentEls = targetEls
+      .map((target) =>
+        target.parentElement?.querySelector(".fade-up-on-scroll-content"),
+      )
+      .filter((el) => el instanceof HTMLElement);
+
+    contentEls.forEach((el) => delete el.dataset.hidden);
+  });
+
+  function isBelowViewport(el: Element) {
+    const { y } = el.getBoundingClientRect();
+
+    const viewportBottomY = window.scrollY + window.innerHeight;
+
+    return y >= viewportBottomY;
+  }
+
+  // On page load, find all the fade-up targets that are below the viewport, hide them, then use the observer to fade them in when the user scrolls down to them
+  const fadeUpTargets = [
+    ...document.querySelectorAll(".fade-up-on-scroll-target"),
+  ].filter((el) => el instanceof HTMLElement);
+
+  const belowViewport = fadeUpTargets.filter(isBelowViewport);
+
+  belowViewport.forEach(
+    (el) =>
+      ((
+        el.parentElement?.querySelector(
+          ".fade-up-on-scroll-content",
+        ) as HTMLElement
+      ).dataset.hidden = ""),
+  );
+
+  belowViewport.forEach((el) => observer.observe(el));
+</script>
