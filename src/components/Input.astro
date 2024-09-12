@@ -7,6 +7,7 @@ interface Props {
   type?: "text" | "email";
   required?: boolean;
   textArea?: boolean;
+  alpineKey?: string;
 }
 
 const props = Astro.props;
@@ -29,6 +30,7 @@ const inputId = nanoid();
           required={props.required}
           id={inputId}
           rows="10"
+          x-model={props.alpineKey}
         />
       ) : (
         <input
@@ -37,6 +39,7 @@ const inputId = nanoid();
           name={props.name}
           required={props.required}
           id={inputId}
+          x-model={props.alpineKey}
         />
       )
     }
