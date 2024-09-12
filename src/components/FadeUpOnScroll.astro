@@ -8,7 +8,10 @@ const { class: className } = Astro.props;
 
 <div x-data="{shown: $el.getBoundingClientRect().y < window.innerHeight}">
   <div x-intersect.margin.-10px="shown = true"></div>
-  <div :style="!shown && {transform: 'translateY(400px)', opacity: 0}" class:list={[className, 'transition-all duration-700 ease-out']}>
+  <div
+    :style="!shown && {transform: 'translateY(400px)', opacity: 0}"
+    class:list={[className, "transition-all duration-700 ease-out"]}
+  >
     <slot />
   </div>
 </div>

@@ -1,10 +1,10 @@
 ---
-import Input from './Input.astro';
+import Input from "./Input.astro";
 ---
 
 <style>
   #email-form-submit-btn:before {
-    content: '•';
+    content: "•";
     position: absolute;
     font-size: 1.2rem;
     transform: translateX(-1em) translateY(-0.075em);
@@ -23,59 +23,49 @@ import Input from './Input.astro';
 </style>
 
 <script>
-  document.addEventListener('alpine:init', () => {
-    window.Alpine.data('contactForm', () => ({
-      name: '',
-      email: '',
-      message: '',
-      status: 'pending' as 'pending'|'submitting'|'success'|'error',
+  document.addEventListener("alpine:init", () => {
+    window.Alpine.data("contactForm", () => ({
+      name: "",
+      email: "",
+      message: "",
+      status: "pending" as "pending" | "submitting" | "success" | "error",
       async onSubmit() {
         try {
-          this.status = 'submitting';
-          
+          this.status = "submitting";
+
           const body = {
             name: this.name,
             email: this.email,
-            message: this.message
-          }
-          
-          await fetch('https://submit-form.com/LfNEIyUoi', {
-            method: 'POST',
+            message: this.message,
+          };
+
+          await fetch("https://submit-form.com/LfNEIyUoi", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
+              "Content-Type": "application/json",
+              Accept: "application/json",
             },
             body: JSON.stringify(body),
           });
 
-          this.status = 'success';
+          this.status = "success";
         } catch {
-          this.status = 'error';
+          this.status = "error";
         }
       },
     }));
   });
 </script>
 
-<form
-  class="w-full space-y-4"
-  x-data="contactForm"
-  @submit.prevent="onSubmit"
->
+<form class="w-full space-y-4" x-data="contactForm" @submit.prevent="onSubmit">
   <Input label="name" name="name" alpineKey="name" />
   <Input label="email" name="email" alpineKey="email" required />
   <Input label="message" name="message" alpineKey="message" required textArea />
   <div class="flex items-center justify-end gap-4">
-    <p
-      class="text-green-500 grow text-left"
-      x-show="status === 'success'"
-    >
+    <p class="text-green-500 grow text-left" x-show="status === 'success'">
       Your message was sent!
     </p>
-    <p
-      class="text-red-500 grow text-left"
-      x-show="status === 'error'"
-    >
+    <p class="text-red-500 grow text-left" x-show="status === 'error'">
       There was an error. Please try again later.
     </p>
     <button
