@@ -8,19 +8,9 @@ const { label, scrollToId } = Astro.props;
 ---
 
 <button
-  class="cursor-pointer hover:underline nav-link text-white text-sm uppercase"
-  data-scroll-to-id={scrollToId}
-  type="button"
+  class="cursor-pointer hover:underline text-white text-sm uppercase"
+  x-data
+  @click={`document.getElementById('${scrollToId}')?.scrollIntoView({ behavior: "smooth" })`}
 >
   {label}
 </button>
-
-<script>
-  document.querySelectorAll(".nav-link").forEach((el) => {
-    const scrollId = (el as HTMLElement).dataset.scrollToId as string;
-
-    el.addEventListener("click", () => {
-      document.getElementById(scrollId)?.scrollIntoView({ behavior: "smooth" });
-    });
-  });
-</script>
