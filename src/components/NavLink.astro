@@ -7,10 +7,13 @@ interface Props {
 const { label, scrollToId } = Astro.props;
 ---
 
-<a
-  class="cursor-pointer hover:underline nav-link"
-  data-scroll-to-id={scrollToId}>{label}</a
+<button
+  class="cursor-pointer hover:underline nav-link text-white text-sm uppercase"
+  data-scroll-to-id={scrollToId}
+  type="button"
 >
+  {label}
+</button>
 
 <script>
   document.querySelectorAll(".nav-link").forEach((el) => {
